@@ -8,12 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Example\**" />
-    <EmbeddedResource Remove="Example\**" />
-    <None Remove="Example\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="NetCoreServer" Version="7.0.0" />
   </ItemGroup>
 
