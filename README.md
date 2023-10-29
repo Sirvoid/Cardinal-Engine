@@ -1,5 +1,6 @@
-![CardinalIcon](https://github.com/Sirvoid/CardinalEngine/assets/17113321/fc71c353-fcf1-4010-81fb-84c9d5c25aa0)
-# Cardinal Engine
+![CardinalIcon](https://github.com/Sirvoid/Cardinal-Engine/assets/17113321/f60be24b-6d7f-4869-927f-de5ab34dddd9)
+
+# Cardinal Engine Server
 
 (WIP)
 
