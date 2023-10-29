@@ -7,6 +7,7 @@
         SyncEntityField,
         AddEntityComponent,
         RemoveEntityComponent,
-        SetNetworkId
+        SetNetworkId,
+        SendCommand
     }
 }

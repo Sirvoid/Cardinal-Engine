@@ -32,5 +32,16 @@
         public void SynchronizeAll() {
             SyncAttribute.ProcessAll(this);
         }
+
+        public void SendCommandAll(byte commandID, params object[] args) {
+            foreach (var viewer in Entity.CurrentRegion.GetObserversWithinRange(1)) {
+                if (viewer.NetPlayer == null) continue;
+                SendCommand(viewer.NetPlayer, commandID, args);
+            }
+        }
+
+        public void SendCommand(NetPlayer player, byte commandID,  params object[] args) {
+            player.SendData(Packet.SendComponentCommand(this, commandID, args));
+        }
     }
 }

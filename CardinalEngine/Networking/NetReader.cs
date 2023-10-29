@@ -11,7 +11,7 @@ namespace CardinalEngine {
 
         public NetReader() {
             Data = new byte[0];
-            _readersByType = new Func<object>[11] {
+            _readersByType = new Func<object>[12] {
                 () => ReadByte(),
                 () => ReadSByte(),
                 () => ReadShort(),
@@ -22,7 +22,8 @@ namespace CardinalEngine {
                 () => ReadLong(),
                 () => ReadULong(),
                 () => ReadVector3(),
-                () => ReadString()
+                () => ReadString(),
+                () => ReadGuid()
             };
         }
 
@@ -91,6 +92,20 @@ namespace CardinalEngine {
             }
 
             return Encoding.UTF8.GetString(stringBytes);
+        }
+
+        public Guid ReadGuid() {
+            byte[] bytes = new byte[16];
+            Array.Copy(Data, Index, bytes, 0, 16);
+            Index += 16;
+            return new Guid(bytes);
+        }
+
+        public byte[] ReadByteArray(byte length) {
+            byte[] bytes = new byte[length];
+            Array.Copy(Data, Index, bytes, 0, length);
+            Index += length;
+            return bytes;
         }
 
         public object ReadSupported() {
