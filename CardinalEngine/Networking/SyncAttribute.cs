@@ -3,7 +3,7 @@
 namespace CardinalEngine {
 
     [AttributeUsage(AttributeTargets.Field)]
-    internal class SyncAttribute : Attribute {
+    public class SyncAttribute : Attribute {
         private int _fieldID;
 
         public SyncAttribute(int fieldID) {

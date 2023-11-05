@@ -8,7 +8,7 @@ using System.Timers;
 
 namespace CardinalEngine {
     public class Cardinal {
-        internal static Cardinal? Instance;
+        public static Cardinal? Instance;
         public List<Space> Spaces { get; private set; } = new List<Space>();
         
         public delegate void CardinalUpdateHandler();

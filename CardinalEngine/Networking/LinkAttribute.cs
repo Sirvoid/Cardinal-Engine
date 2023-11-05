@@ -15,18 +15,24 @@ namespace CardinalEngine {
         public static ushort GetTypeID(NetComponent component) {
             Type type = component.GetType();
             if (TypesID.ContainsKey(type)) return TypesID[type];
-            return ushort.MaxValue;
+            throw new Exception("Component has no link.");
         }
 
         internal static void CompileComponentTypesID() {
-            Type[] types = Assembly.GetExecutingAssembly().GetTypes();
+            List<Assembly> assemblies = new List<Assembly> { Assembly.GetExecutingAssembly()};
+            Assembly? entryAssembly = Assembly.GetEntryAssembly();
+            if (entryAssembly != null) assemblies.Add(entryAssembly);
 
-            foreach (Type type in types) {
-                if (type.IsSubclassOf(typeof(NetComponent))) {
-                    object[] attributes = type.GetCustomAttributes(typeof(LinkAttribute), false);
+            foreach(Assembly assembly in assemblies) { 
+                Type[] types = assembly.GetTypes();
+            
+                foreach (Type type in types) {
+                    if (type.IsSubclassOf(typeof(NetComponent))) {
+                        object[] attributes = type.GetCustomAttributes(typeof(LinkAttribute), false);
 
-                    foreach (LinkAttribute attribute in attributes) {
-                        TypesID[type] = (ushort)attribute._componentTypeID;
+                        foreach (LinkAttribute attribute in attributes) {
+                            TypesID[type] = (ushort)attribute._componentTypeID;
+                        }
                     }
                 }
             }

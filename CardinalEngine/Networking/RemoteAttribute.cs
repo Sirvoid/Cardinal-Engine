@@ -3,7 +3,7 @@
 namespace CardinalEngine {
 
     [AttributeUsage(AttributeTargets.Method)]
-    internal class RemoteAttribute : Attribute {
+    public class RemoteAttribute : Attribute {
         private int _methodID;
 
         public RemoteAttribute(int commandID) {
