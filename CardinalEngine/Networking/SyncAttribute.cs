@@ -35,7 +35,6 @@ namespace CardinalEngine {
 
                         foreach (var viewer in entity.CurrentRegion.GetObserversWithinRange(1)) {
                             viewer.NetPlayer?.SendData(Packet.SyncComponentField(entity, component, syncAttribute._fieldID, variableType, field.GetValue(component)));
-                            return;
                         }
                     }
 
